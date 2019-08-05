@@ -3,15 +3,19 @@ package com.monkeymedia.demo.Model.Entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Field {
 	@Id
 	@Column(name="field_id")
-	private int fieldId;
+	private  int fieldId;
 	
-	@Column(name="gateway_id")
-	private int gatewayId;
+	
+	@ManyToOne
+	@JoinColumn(name="gateway_id")
+	private Gateway gateway;
 	
 	@Column(name="name")
 	private String name;
@@ -27,12 +31,12 @@ public class Field {
 		this.fieldId = fieldId;
 	}
 
-	public int getGatewayId() {
-		return gatewayId;
+	public Gateway getGatewayId() {
+		return gateway;
 	}
 
-	public void setGatewayId(int gatewayId) {
-		this.gatewayId = gatewayId;
+	public void setGatewayId(Gateway gateway) {
+		this.gateway = gateway;
 	}
 
 	public String getName() {
